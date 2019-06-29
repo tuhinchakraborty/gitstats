@@ -5,8 +5,19 @@ import Button from '@material-ui/core/Button';
 class Search extends Component {
 
     state = {
-        searchText: ""
+        searchText: "",
+        userData: []
     };
+
+    handleSubmit() {
+        fetch("https://api.github.com/users/" + this.state.searchText +"/repos")
+            .then(response => response.json())
+            .then(json => {
+                this.setState({
+                    userData: json
+                })
+            });
+    }
 
     handleChange = (event) => {
         let eventTarget = event.target;
@@ -26,7 +37,7 @@ class Search extends Component {
                     variant="outlined"
                     onChange={event => this.handleChange(event)}
                 />
-                <Button variant="contained" color="primary">
+                <Button variant="contained" color="primary" onClick={() => this.handleSubmit()}>
                     Primary
                 </Button>
             </div>
