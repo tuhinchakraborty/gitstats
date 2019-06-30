@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {TextField} from "@material-ui/core";
 import Button from '@material-ui/core/Button';
+import ReposList from "./ReposList";
 
 class Search extends Component {
 
@@ -9,17 +10,17 @@ class Search extends Component {
         userData: []
     };
 
-    handleSubmit() {
-        fetch("https://api.github.com/users/" + this.state.searchText +"/repos")
+    handleSubmit = () => {
+        fetch("https://api.github.com/users/" + this.state.searchText + "/repos")
             .then(response => response.json())
             .then(json => {
                 this.setState({
                     userData: json
                 })
             });
-    }
+    };
 
-    handleChange = (event) => {
+    handleChange = event => {
         let eventTarget = event.target;
         this.setState({
             searchText: eventTarget.value
@@ -38,8 +39,9 @@ class Search extends Component {
                     onChange={event => this.handleChange(event)}
                 />
                 <Button variant="contained" color="primary" onClick={() => this.handleSubmit()}>
-                    Primary
+                    Submit
                 </Button>
+                <ReposList userData={this.state.userData}/>
             </div>
         );
     }
