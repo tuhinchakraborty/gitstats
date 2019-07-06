@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import '../App.css';
 import {makeStyles} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
@@ -20,25 +20,26 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Repo = (props) => {
-    const classes = useStyles();
-    return (
-        <Grid container className={classes.root} spacing={5}>
-            <Grid item xs={12}>
-                <Grid container justify="center" spacing={50}>
-                    <Paper className={classes.paper}>
-                        <Typography color="textPrimary">
-                            {props.content.full_name}
-                        </Typography>
-                        <Typography color="textSecondary">
-                            {props.content.description}
-                        </Typography>
-                        <Button color="primary">Details</Button>
-                    </Paper>
+class Repo extends Component {
+    render() {
+        return (
+            <Grid container className={useStyles.root} spacing={5}>
+                <Grid item xs={12}>
+                    <Grid container justify="center">
+                        <Paper className={useStyles.paper}>
+                            <Typography color="textPrimary">
+                                {this.props.content.full_name}
+                            </Typography>
+                            <Typography color="textSecondary">
+                                {this.props.content.description}
+                            </Typography>
+                            <Button color="primary" onClick={() => console.log(this.props.content.full_name)}>Details</Button>
+                        </Paper>
+                    </Grid>
                 </Grid>
             </Grid>
-        </Grid>
-    );
-};
+        );
+    }
+}
 
 export default Repo;
