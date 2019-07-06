@@ -22,9 +22,9 @@ class Repo extends Component {
                       direction="row"
                       justify="center"
                       alignItems="center">
-                    <Grid xs={12} sm={6} md={3}>
+                    <Grid direction="row-reverse" xs={12} sm={6} md={3}>
                         <Card elevation={10}>
-                            <CardHeader title={this.props.content.full_name}/>
+                            <CardHeader title={this.props.content.name}/>
                             <CardContent>
                                 <Typography color="textSecondary">
                                     {this.props.content.description}
