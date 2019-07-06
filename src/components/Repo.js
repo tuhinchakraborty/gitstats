@@ -34,8 +34,8 @@ class Repo extends Component {
                                 })}>Details</Button>
                             </CardContent>
                         </Card>
-                        {this.state.displayCharts ? <GithubChart fullName={this.props.content.full_name}/> : null}
                     </Grid>
+                    {this.state.displayCharts ? <GithubChart fullName={this.props.content.full_name}/> : null}
                 </Grid>
             </div>
         )
