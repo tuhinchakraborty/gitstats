@@ -20,10 +20,10 @@ class Repo extends Component {
                 <Grid container
                       spacing={2}
                       direction="row"
-                      justify="flex-start"
-                      alignItems="flex-start">
-                    <Grid item xs={12} sm={6} md={3}>
-                        <Card elevation={5}>
+                      justify="center"
+                      alignItems="center">
+                    <Grid xs={12} sm={6} md={3}>
+                        <Card elevation={10}>
                             <CardHeader title={this.props.content.full_name}/>
                             <CardContent>
                                 <Typography color="textSecondary">
