@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from '@material-ui/core/Paper';
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import GithubChart from "./GithubChart";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -21,6 +22,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 class Repo extends Component {
+
+    state = {
+        displayCharts: false
+    };
+
     render() {
         return (
             <Grid container className={useStyles.root} spacing={5}>
@@ -33,8 +39,11 @@ class Repo extends Component {
                             <Typography color="textSecondary">
                                 {this.props.content.description}
                             </Typography>
-                            <Button color="primary" onClick={() => console.log(this.props.content.full_name)}>Details</Button>
+                            <Button color="primary" onClick={() => this.setState({
+                                displayCharts: !this.state.displayCharts
+                            })}>Details</Button>
                         </Paper>
+                        {this.state.displayCharts ? <GithubChart fullName={this.props.content.full_name}/> : null}
                     </Grid>
                 </Grid>
             </Grid>
