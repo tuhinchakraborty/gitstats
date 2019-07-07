@@ -16,7 +16,7 @@ class ReposList extends Component {
     };
 
     render() {
-        var cardStyle = {
+        const cardStyle = {
             display: 'block',
             transitionDuration: '0.3s',
             height: '15vw'
