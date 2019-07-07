@@ -50,21 +50,23 @@ class GithubChart extends Component {
 
     render() {
         return (
-            <LineChart
-                width={1000}
-                height={500}
-                data={this.state.modifiedGithubData}
-                margin={{
-                    top: 5, right: 30, left: 20, bottom: 5,
-                }}
-            >
-                <CartesianGrid strokeDasharray="3 3"/>
-                <XAxis dataKey="day"/>
-                <YAxis/>
-                <Tooltip/>
-                <Legend/>
-                <Line type="monotone" dataKey="contributions" stroke="#854442" activeDot={{r: 8}}/>
-            </LineChart>
+            <div className="div">
+                <LineChart
+                    width={1000}
+                    height={500}
+                    data={this.state.modifiedGithubData}
+                    margin={{
+                        top: 30, right: 30, left: 20, bottom: 5,
+                    }}
+                >
+                    <CartesianGrid strokeDasharray="3 3"/>
+                    <XAxis dataKey="day"/>
+                    <YAxis/>
+                    <Tooltip/>
+                    <Legend/>
+                    <Line type="monotone" dataKey="contributions" stroke="#854442" activeDot={{r: 8}}/>
+                </LineChart>
+            </div>
         );
     }
 }
