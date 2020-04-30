@@ -31,7 +31,7 @@ class Repo extends Component {
                                 </Typography>
                                 <Button color="primary" onClick={() => this.setState({
                                     displayCharts: !this.state.displayCharts
-                                })}>Details</Button>
+                                })}>{this.state.displayCharts ? 'Close' : 'Details'}</Button>
                             </CardContent>
                         </Card>
                     </Grid>
