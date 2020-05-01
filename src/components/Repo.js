@@ -17,13 +17,13 @@ class Repo extends Component {
     render() {
         return (
             <div className="div">
-                <Grid container
-                      spacing={2}
+                <Grid
                       direction="row"
                       justify="center"
-                      alignItems="center">
+                      alignItems="center"
+                      alignContent="center">
                     <Grid direction="row-reverse" xs={12} sm={6} md={3}>
-                        <Card elevation={10}>
+                        <Card elevation={10} className="Repo">
                             <CardHeader title={this.props.content.name}/>
                             <CardContent>
                                 <Typography color="textSecondary">

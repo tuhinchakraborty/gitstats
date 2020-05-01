@@ -6,7 +6,7 @@ class ReposList extends Component {
     render() {
         const repos = this.props.userData.map(content => <Repo key={content.id} content={content}/>);
         return (
-            <div>
+            <div className="RepoList">
                 {repos}
             </div>
         );

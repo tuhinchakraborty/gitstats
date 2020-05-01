@@ -6,3 +6,16 @@
   margin-top: 20px;
   margin-left: 20px;
 }
+
+.RepoList {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Repo {
+  min-height: 250px;
+  max-height: 250px;
+  min-width: 375px;
+  max-width: 375px;
+}
