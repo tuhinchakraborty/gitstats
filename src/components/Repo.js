@@ -14,6 +14,12 @@ class Repo extends Component {
         displayCharts: false
     };
 
+    handleOpen = () => {
+        this.setState({
+            displayCharts: !this.state.displayCharts
+        })
+    }
+
     render() {
         return (
             <div className="div">
@@ -29,9 +35,7 @@ class Repo extends Component {
                                 <Typography color="textSecondary">
                                     {this.props.content.description}
                                 </Typography>
-                                <Button color="primary" onClick={() => this.setState({
-                                    displayCharts: !this.state.displayCharts
-                                })}>{this.state.displayCharts ? 'Close' : 'Details'}</Button>
+                                <Button color="primary" onClick= {this.handleOpen}>{this.state.displayCharts ? 'Close' : 'Details'}</Button>
                             </CardContent>
                         </Card>
                     </Grid>
