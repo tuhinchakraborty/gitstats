@@ -35,7 +35,7 @@ class Search extends Component {
             <div>
                 <div className="div">
                     <TextField
-                        error={this.state.searchText === "" ? "error" : ""}
+                        error={this.state.searchText === ""}
                         id="outlined-search"
                         label="username"
                         type="search"
