@@ -12,13 +12,15 @@ class Search extends Component {
     };
 
     handleSubmit = () => {
-        fetch("https://api.github.com/users/" + this.state.searchText + "/repos")
-            .then(response => response.json())
-            .then(json => {
-                this.setState({
-                    userData: json
-                })
-            });
+        if (this.state.searchText !== "") {
+            fetch("https://api.github.com/users/" + this.state.searchText + "/repos")
+                .then(response => response.json())
+                .then(json => {
+                    this.setState({
+                        userData: json
+                    })
+                });
+        }
     };
 
     handleChange = event => {
