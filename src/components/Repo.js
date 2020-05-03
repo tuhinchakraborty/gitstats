@@ -7,6 +7,7 @@ import GithubChart from "./GithubChart";
 import {Card} from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
+import Modal from "@material-ui/core/Modal";
 
 class Repo extends Component {
 
@@ -17,6 +18,12 @@ class Repo extends Component {
     handleOpen = () => {
         this.setState({
             displayCharts: !this.state.displayCharts
+        })
+    }
+
+    handleClose = () => {
+        this.setState({
+            displayCharts: false
         })
     }
 
@@ -37,9 +44,16 @@ class Repo extends Component {
                                 </Typography>
                                 <Button color="primary" onClick= {this.handleOpen}>{this.state.displayCharts ? 'Close' : 'Details'}</Button>
                             </CardContent>
+                            <div>
+                                <Modal open={this.state.displayCharts} onClose={this.handleClose}>
+                                    <div className="modal">
+                                        <h1>{this.props.content.name}</h1>
+                                        {this.state.displayCharts ? <GithubChart fullName={this.props.content.full_name}/> : null}
+                                    </div>
+                                </Modal>
+                            </div>
                         </Card>
                     </Grid>
-                    {this.state.displayCharts ? <GithubChart fullName={this.props.content.full_name}/> : null}
                 </Grid>
             </div>
         )
