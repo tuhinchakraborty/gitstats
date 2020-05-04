@@ -17,17 +17,16 @@ class Search extends Component {
 
     handleSubmit = () => {
         if (this.state.searchText !== "") {
-            fetch("https://api.github.com/users/" + this.state.searchText + "/repos")
-                .then(response => response.json())
-                .then(json => {
+            let userReposJson = fetch("https://api.github.com/users/" + this.state.searchText + "/repos")
+                .then(response => response.json());
+
+            userReposJson.then(json => {
                     this.setState({
                         allRepos: json
                     })
                 });
 
-            fetch("https://api.github.com/users/" + this.state.searchText + "/repos")
-                .then(response => response.json())
-                .then(json => json.filter(obj => !JSON.parse(obj.fork)))
+            userReposJson.then(json => json.filter(obj => !JSON.parse(obj.fork)))
                 .then(json => {
                     this.setState({
                         ownedRepos: json
