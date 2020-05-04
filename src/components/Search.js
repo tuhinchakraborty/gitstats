@@ -3,22 +3,34 @@ import {TextField} from "@material-ui/core";
 import Button from '@material-ui/core/Button';
 import ReposList from "./ReposList";
 import '../App.css';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 
 class Search extends Component {
 
     state = {
         searchText: "",
-        userData: []
+        userData: [],
+        ownedRepos:[],
+        showForkedRepos: false
     };
 
     handleSubmit = () => {
         if (this.state.searchText !== "") {
             fetch("https://api.github.com/users/" + this.state.searchText + "/repos")
                 .then(response => response.json())
-                .then(json => this.getNonForkedRepos(json))
                 .then(json => {
                     this.setState({
                         userData: json
+                    })
+                });
+
+            fetch("https://api.github.com/users/" + this.state.searchText + "/repos")
+                .then(response => response.json())
+                .then(json => json.filter(obj => !JSON.parse(obj.fork)))
+                .then(json => {
+                    this.setState({
+                        ownedRepos: json
                     })
                 });
         }
@@ -31,7 +43,11 @@ class Search extends Component {
         })
     };
 
-    getNonForkedRepos = json => json.filter(obj => !JSON.parse(obj.fork))
+    handleSwitchChanged = () => {
+        this.setState({
+            showForkedRepos: !this.state.showForkedRepos,
+        })
+    }
 
     render() {
         return (
@@ -53,7 +69,15 @@ class Search extends Component {
                     </Button>
                 </div>
                 <div>
-                    <ReposList userData={this.state.userData}/>
+                    <FormControlLabel
+                        value="forked"
+                        control={<Switch color="primary" onChange={() => this.handleSwitchChanged()}/>}
+                        label="Show Forked Repos"
+                        labelPlacement="end"
+                    />
+                </div>
+                <div>
+                    <ReposList userData={this.state.showForkedRepos ? this.state.userData : this.state.ownedRepos}/>
                 </div>
             </div>
         );
