@@ -10,7 +10,7 @@ class Search extends Component {
 
     state = {
         searchText: "",
-        userData: [],
+        allRepos: [],
         ownedRepos:[],
         showForkedRepos: false
     };
@@ -21,7 +21,7 @@ class Search extends Component {
                 .then(response => response.json())
                 .then(json => {
                     this.setState({
-                        userData: json
+                        allRepos: json
                     })
                 });
 
@@ -77,7 +77,7 @@ class Search extends Component {
                     />
                 </div>
                 <div>
-                    <ReposList userData={this.state.showForkedRepos ? this.state.userData : this.state.ownedRepos}/>
+                    <ReposList repos={this.state.showForkedRepos ? this.state.allRepos : this.state.ownedRepos}/>
                 </div>
             </div>
         );
