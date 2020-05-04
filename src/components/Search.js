@@ -15,6 +15,7 @@ class Search extends Component {
         if (this.state.searchText !== "") {
             fetch("https://api.github.com/users/" + this.state.searchText + "/repos")
                 .then(response => response.json())
+                .then(json => this.getNonForkedRepos(json))
                 .then(json => {
                     this.setState({
                         userData: json
@@ -29,6 +30,8 @@ class Search extends Component {
             searchText: eventTarget.value
         })
     };
+
+    getNonForkedRepos = json => json.filter(obj => !JSON.parse(obj.fork))
 
     render() {
         return (
