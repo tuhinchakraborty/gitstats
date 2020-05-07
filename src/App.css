@@ -90,3 +90,25 @@
 .title-darkgrey {
   color: darkgrey;
 }
+
+body {
+  margin:0;
+  padding:0;
+  background:whitesmoke;
+}
+
+h4 {
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+  text-align:center;
+  color:#000;
+  font-size:12px;
+  padding:15px 0;
+  text-transform: uppercase;
+  letter-spacing:1px;
+}
+
+.switch {
+  display: ruby;
+}

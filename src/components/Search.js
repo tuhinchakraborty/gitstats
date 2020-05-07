@@ -67,13 +67,13 @@ class Search extends Component {
                         Submit
                     </Button>
                 </div>
-                <div>
+                <div className="switch">
                     <FormControlLabel
                         value="forked"
                         control={<Switch color="primary" onChange={() => this.handleSwitchChanged()}/>}
-                        label="Show Forked Repos"
                         labelPlacement="end"
                     />
+                    <h4>Show Forked</h4>
                 </div>
                 <div>
                     <ReposList repos={this.state.showForkedRepos ? this.state.allRepos : this.state.ownedRepos}/>
