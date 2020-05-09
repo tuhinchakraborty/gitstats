@@ -5,6 +5,21 @@ import ReposList from "./ReposList";
 import '../App.css';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
+import { withStyles, createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import {
+    amber, blue,
+    blueGrey,
+    brown,
+    deepOrange,
+    deepPurple,
+    green,
+    grey,
+    lightGreen,
+    lime,
+    purple,
+    red
+} from "@material-ui/core/colors";
+import { ThemeProvider } from '@material-ui/styles';
 
 class Search extends Component {
 
@@ -49,28 +64,46 @@ class Search extends Component {
     }
 
     render() {
+        const limeTheme = createMuiTheme({
+            palette: {
+                primary: lime,
+            },
+        });
+        const blueTheme = createMuiTheme({
+            palette: {
+                primary: blue,
+            },
+        });
         return (
             <div>
                 <div className="div">
-                    <TextField
-                        error={this.state.searchText === ""}
-                        id="outlined-search"
-                        label="username"
-                        type="search"
-                        margin="normal"
-                        variant="outlined"
-                        onChange={event => this.handleChange(event)}
-                    />
-                </div>
-                <div>
-                    <Button variant="contained" color="primary" onClick={() => this.handleSubmit()}>
-                        Submit
-                    </Button>
+                    <ThemeProvider theme={limeTheme}>
+                        <TextField
+                            inputProps={{ style: { fontFamily: 'Geneva', color: 'white'}}}
+                            style={{ flex: 1, margin: '0 20px 10px 0', color: 'white'}}
+                            error={this.state.searchText === ""}
+                            id="outlined-search"
+                            label="username"
+                            type="search"
+                            margin="normal"
+                            variant="outlined"
+                            onChange={event => this.handleChange(event)}
+                        />
+                    </ThemeProvider>
+                    <ThemeProvider theme={blueTheme}>
+                        <Button variant="contained" color="primary" onClick={() => this.handleSubmit()}>
+                            Submit
+                        </Button>
+                    </ThemeProvider>
                 </div>
                 <div className="switch">
                     <FormControlLabel
                         value="forked"
-                        control={<Switch color="primary" onChange={() => this.handleSwitchChanged()}/>}
+                        control={
+                            <ThemeProvider theme={limeTheme}>
+                                <Switch color="primary" onChange={() => this.handleSwitchChanged()}/>
+                            </ThemeProvider>
+                        }
                         labelPlacement="end"
                     />
                     <h4>Show Forked</h4>

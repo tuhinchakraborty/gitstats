@@ -63,7 +63,7 @@ class GithubChart extends Component {
                 <YAxis/>
                 <Tooltip/>
                 <Legend/>
-                <Line type="monotone" dataKey="contributions" stroke="#854442" activeDot={{r: 8}}/>
+                <Line type="monotone" dataKey="contributions" stroke="#cddc39" activeDot={{r: 8}}/>
             </LineChart>
         );
     }
