@@ -32,6 +32,9 @@ class Repo extends Component {
                         <div className="card_description title-darkgrey">
                             <p>{this.props.content.description}</p>
                         </div>
+                        <div className="card_repo_language title-cadetblue">
+                            <p>{this.props.content.language}</p>
+                        </div>
                         <div>
                             <Modal open={this.state.displayCharts} onClose={this.handleClose}>
                                 <div className="modal">
